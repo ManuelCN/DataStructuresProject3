@@ -38,10 +38,8 @@ public class GenealogicalTreeMain {
 					if(temp.isEmpty()) {
 						temp.addRoot(data.get(j));
 						gender = data.get(j) % 2;	//0 for Men, 1 for Women
-						if(data.get(j+1) % 2 == gender) {
-							//If the gender of the child is appropriate, immediately add the child.
-							temp.addChild(temp.root(), data.get(j+1));
-						}
+						temp.addChild(temp.root(), data.get(j+1));
+						
 					} else {
 						//If the subtree is no longer empty, continue construction with initialized parameters (gender, who is root, etc).
 						Position<Integer> tempPos = null;
@@ -52,7 +50,7 @@ public class GenealogicalTreeMain {
 							}
 						}
 						if(tempPos != null) {
-							if(data.get(j+1) % 2 == gender) {
+							if(tempPos.getElement() % 2 == gender) {
 								//If a parent is found and the child is of the appropriate gender, add to subtree.
 								temp.addChild(tempPos, data.get(j+1));
 							}
